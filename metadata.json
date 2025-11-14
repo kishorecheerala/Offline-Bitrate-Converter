@@ -1,0 +1,5 @@
+{
+  "name": "Offline Bitrate Converter",
+  "description": "An offline video bitrate converter to fix issues with creative assets for platforms like Netflix. Process videos directly in your browser using the power of FFmpeg compiled to WebAssembly.",
+  "requestFramePermissions": []
+}
