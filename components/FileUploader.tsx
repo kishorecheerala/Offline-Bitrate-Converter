@@ -1,12 +1,14 @@
 import React, { useState, useCallback } from 'react';
 import { UploadIcon } from './icons/UploadIcon';
+import { VideoIcon } from './icons/VideoIcon';
 
 interface FileUploaderProps {
   onFileSelect: (file: File) => void;
   disabled: boolean;
+  videoFile: File | null;
 }
 
-const FileUploader: React.FC<FileUploaderProps> = ({ onFileSelect, disabled }) => {
+const FileUploader: React.FC<FileUploaderProps> = ({ onFileSelect, disabled, videoFile }) => {
   const [isDragging, setIsDragging] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +42,21 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onFileSelect, disabled }) =
       onFileSelect(e.dataTransfer.files[0]);
     }
   }, [disabled, onFileSelect]);
+
+
+  if (videoFile) {
+    return (
+        <div className="bg-gray-700/50 rounded-lg p-4 flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+                <VideoIcon className="h-10 w-10 text-blue-400"/>
+                <div>
+                    <p className="font-semibold text-white truncate max-w-xs">{videoFile.name}</p>
+                    <p className="text-sm text-gray-400">{(videoFile.size / (1024 * 1024)).toFixed(2)} MB</p>
+                </div>
+            </div>
+        </div>
+    );
+  }
 
   return (
     <div
