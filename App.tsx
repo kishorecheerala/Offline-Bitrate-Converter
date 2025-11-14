@@ -37,7 +37,7 @@ const App: React.FC = () => {
       const { createFFmpeg, fetchFile } = window.FFmpeg;
       const ffmpeg = createFFmpeg({
         log: false, // We'll handle logs manually
-        corePath: 'https://unpkg.com/@ffmpeg/core@0.12.10/dist/ffmpeg-core.js',
+        corePath: 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/ffmpeg-core.js',
         progress: ({ ratio }) => {
           setLoadingProgress(Math.max(0, Math.min(1, ratio)));
         },
